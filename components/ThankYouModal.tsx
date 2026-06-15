@@ -68,7 +68,7 @@ export default function ThankYouModal({
         </h2>
 
         <p className="text-neutral-700">
-          O presente <strong>{giftName}</strong> foi registrado com muito carinho.
+          O presente <strong>{giftName}</strong> foi recebido com muito carinho.
         </p>
 
         <p className="mt-4 text-sm text-neutral-500">
