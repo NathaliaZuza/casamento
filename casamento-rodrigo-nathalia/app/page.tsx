@@ -10,7 +10,7 @@ import GiftsSection from "@/components/GiftsSection";
 import CerimonySection from "@/components/CerimonySection";
 import PhotosSection from "@/components/PhotoSection";
 
-export default function Home() {
+export default function Page() {
   useEffect(() => {
     async function test() {
       const { data, error } = await supabase.from("gifts").select("*");
