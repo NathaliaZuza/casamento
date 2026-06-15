@@ -49,24 +49,24 @@ export default function CerimonySection() {
 
   const items = [
     {
-      title: "Miniwedding íntimo",
-      text: "com família e amigos próximos, em um ambiente acolhedor e cheio de significado",
+      title: "Formato miniwedding",
+      text: "Será uma cerimônia íntima, contando apenas com familiares e amigos próximos.",
     },
     {
-      title: "Cerimônia e recepção",
-      text: "acontecem no mesmo local, sem deslocamentos ou separações de ambientes",
+      title: "Cerimônia e festa",
+      text: "Acontecerão no mesmo local, sem necessidade de deslocamento para outro espaço.s",
     },
     {
       title: "Início pontual às 16h",
-      text: "com duração aproximada de 3 horas de celebração",
+      text: "Nossa celebração terá apenas 3 horas. Não perca os primeiros momentos.",
     },
     {
-      title: "Evento simples e leve",
-      text: "sem custos adicionais de buffet ou taxas extras",
+      title: "Evento sem custos",
+      text: "Não haverá cobrança de entrada nem custos para participar do buffet.",
     },
     {
-      title: "Traje esporte fino",
-      text: "priorize conforto e bem-estar acima de qualquer formalidade",
+      title: "Código de vestimenta",
+      text: "Escolhemos o traje esporte fino, trazendo elegância e conforto.",
     },
   ];
 
@@ -76,7 +76,15 @@ export default function CerimonySection() {
       className="w-full py-24 px-6 md:px-12 bg-[#fffcf7]"
     >
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
-        {/* TITLE */}
+        <div ref={imageRef}>
+          <div className="w-[220px] h-[220px] md:w-[220px] md:h-[220px] rounded-full overflow-hidden mt-[0px]">
+            <img
+              src="/images/cerimonia1.jpg"
+              alt="Cerimônia"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
         <h2
           className="
                 font-serif
@@ -91,7 +99,7 @@ export default function CerimonySection() {
                 max-[1285px]:text-[3rem]
             "
         >
-          A cerimônia
+          Sobre a cerimônia
         </h2>
 
         {/* DESCRIPTION */}
@@ -99,9 +107,7 @@ export default function CerimonySection() {
           ref={descRef}
           className="text-center text-neutral-600 max-w-2xl leading-relaxed"
         >
-          Será uma cerimônia simples, leve e cheia de amor. Um momento íntimo e
-          significativo, pensado para que todos estejam confortáveis e vivam
-          cada instante com tranquilidade e presença.
+          Queremos proporcionar um momento leve, íntimo e significativo, pensado para que todos possam aproveitar cada instante com conforto. Veja como será o nosso dia:
         </p>
 
         {/* GRID CARDS */}
@@ -114,9 +120,7 @@ export default function CerimonySection() {
                 ref={addToRefs}
                 className="
                   p-7
-                  border
-                  border-black
-                  bg-transparent
+                  bg-[#f8f4ef]
                   transition
                   text-center
                 "
@@ -139,9 +143,7 @@ export default function CerimonySection() {
                 ref={addToRefs}
                 className="
                   p-7
-                  border
-                  border-black
-                  bg-transparent
+                  bg-[#f8f4ef]
                   transition
                   text-center
                 "
@@ -156,16 +158,7 @@ export default function CerimonySection() {
             ))}
           </div>
         </div>
-        {/* IMAGE */}
-        <div ref={imageRef}>
-          <div className="w-[260px] h-[260px] md:w-[340px] md:h-[340px] rounded-full overflow-hidden mt-[40px]">
-            <img
-              src="/images/cerimonia.jpg"
-              alt="Cerimônia"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
+       
       </div>
     </section>
   );

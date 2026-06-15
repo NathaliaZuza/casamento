@@ -5,15 +5,15 @@ import gsap from "gsap";
 
 const images = [
   {
-    src: "/images/hero-1.jpg",
+    src: "/images/hero-11.jpg",
     mobilePosition: "65% center",
   },
   {
-    src: "/images/hero-2.jpg",
+    src: "/images/hero-21.jpg",
     mobilePosition: "57% center",
   },
   {
-    src: "/images/hero-3.jpg",
+    src: "/images/hero-31.jpg",
     mobilePosition: "34% center",
   },
 ];

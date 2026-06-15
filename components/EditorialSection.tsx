@@ -50,7 +50,7 @@ export default function EditorialSection() {
       <div className="relative mx-auto max-w-[1400px] px-8">
         <img
           ref={float1Ref}
-          src="/images/floating-1.jpg"
+          src="/images/floating-11.jpg"
           alt=""
          className="
           absolute
@@ -64,7 +64,7 @@ export default function EditorialSection() {
 
         <img
           ref={float2Ref}
-          src="/images/floating-2.jpg"
+          src="/images/floating-21.jpg"
           alt=""
          className="
   absolute
@@ -108,7 +108,7 @@ export default function EditorialSection() {
         </div>
 
         <img
-          src="/images/floating-3.jpg"
+          src="/images/floating-31.jpg"
           alt=""
           className="
             absolute
@@ -133,7 +133,7 @@ export default function EditorialSection() {
         <div className="relative w-full">
           <img
             ref={float4Ref}
-            src="/images/floating-4.jpg"
+            src="/images/floating-41.jpg"
             alt=""
             className="
             absolute
@@ -154,7 +154,7 @@ export default function EditorialSection() {
               ref={bgImageRef}
               className="h-[1200px] md:h-[1400px]"
               style={{
-                backgroundImage: "url('/images/background-editorial.jpg')",
+                backgroundImage: "url('/images/background-editorial1.jpg')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 filter: "grayscale(100%) brightness(0.55)",
@@ -184,7 +184,7 @@ export default function EditorialSection() {
                 "
             >
               <img
-                src="/images/vertical-photo.jpg"
+                src="/images/vertical-photo1.jpg"
                 alt=""
                 className="
                   w-full
