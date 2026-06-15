@@ -162,27 +162,26 @@ export default function Hero() {
           className="
     font-serif
     leading-[0.95]
-    text-[52px]
-    sm:text-[70px]
+    text-[65px]
     md:text-[90px]
     lg:text-[112px]
     break-words
+    px-[50px]
   "
         >
-          <span className="block leading-[100%]">Rodrigo Vilefort </span>
+          <span className="block leading-[100%]">Rodrigo Vilefort</span>
           <span
             className="
     block
     leading-[100%]
     text-[40px]
-    sm:text-[50px]
     md:text-[60px]
-    lg:text-[72px]
+    lg:text-[65px]
   "
           >
             &{" "}
           </span>
-          <span className="block leading-[100%]"> Nathália Zuza</span>
+          <span className="block leading-[100%]">Nathália Zuza</span>
         </h1>
 
         <p

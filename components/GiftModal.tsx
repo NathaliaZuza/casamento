@@ -127,7 +127,7 @@ export default function GiftModal({ category, onClose }: Props) {
               className="
                 mt-4
                 font-serif
-                text-4xl
+                text-[26px]
                 md:text-6xl
                 leading-[0.95]
               "

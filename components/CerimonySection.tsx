@@ -89,13 +89,11 @@ export default function CerimonySection() {
           className="
                 font-serif
                 leading-[0.95]
-                px-4
-
                 text-[2rem]
                 sm:text-[2.6rem]
                 md:text-[3.6rem]
                 lg:text-[6rem]
-
+                text-center
                 max-[1285px]:text-[3rem]
             "
         >
