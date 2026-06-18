@@ -9,14 +9,16 @@ type Props = {
   giftId: number;
   giftName: string;
   giftPrice: number;
+  giftCategory: string;
   onClose: () => void;
-  onSuccess: (name: string) => void; 
+  onSuccess: (name: string) => void;
 };
 
 export default function PixModal({
   giftId,
   giftName,
   giftPrice,
+  giftCategory,
   onClose,
   onSuccess,
 }: Props) {
@@ -32,6 +34,8 @@ export default function PixModal({
   const modalRef = useRef<HTMLDivElement>(null);
 
   const pixKey = "61986373130";
+
+  const isPixLivre = giftCategory === "PIX LIVRE";
 
   const handleCopy = async (text: string) => {
     await navigator.clipboard.writeText(text);
@@ -69,7 +73,7 @@ export default function PixModal({
   };
 
   async function confirmGift() {
-    if (!type) {
+    if (!isPixLivre && !type) {
       setError("Escolha como deseja presentear os noivos.");
       return;
     }
@@ -79,29 +83,44 @@ export default function PixModal({
       return;
     }
 
-    setError("");
     setLoading(true);
+    setError("");
 
-    const { error } = await supabase
-      .from("gifts")
-      .update({
-        reserved: true,
-        reserved_by: name,
-        reserved_type: type,
-      })
-      .eq("id", giftId);
+    let error;
+
+    if (isPixLivre) {
+      const result = await supabase.from("pix_contributions").insert({
+        gift_id: giftId,
+        contributor_name: name,
+      });
+
+      console.log("RESULT", result);
+
+      error = result.error;
+    } else {
+      const result = await supabase
+        .from("gifts")
+        .update({
+          reserved: true,
+          reserved_by: name,
+          reserved_type: type,
+        })
+        .eq("id", giftId);
+
+      error = result.error;
+    }
 
     setLoading(false);
 
     if (error) {
-      setError("Erro ao reservar presente.");
+      setError("Erro ao salvar.");
       return;
     }
 
     closeAnimated();
 
     setTimeout(() => {
-      onSuccess(name); 
+      onSuccess(name);
     }, 300);
   }
 
@@ -121,22 +140,21 @@ export default function PixModal({
           overflow-y-auto
           rounded-xl
           p-6 md:p-10
-          flex flex-col gap-6
+          flex flex-col gap-3
         "
       >
         {/* HEADER */}
         <div>
-          <h2 className="text-2xl md:text-4xl font-serif">{giftName}</h2>
+          <h2 className="text-2xl md:text-4xl font-serif mb-3">
+            {giftName} ·{" "}
+            {!isPixLivre ? (
+              <span className="mt-2">R$ {giftPrice.toFixed(2)}</span>
+            ) : null}
+          </h2>
 
-          <p className="text-neutral-600 text-sm md:text-base mt-2">
-            Escolha como deseja presentear os noivos
-          </p>
-        </div>
-
-        {/* NOME */}
-        <div>
-          <input
-            className="
+          <div>
+            <input
+              className="
               w-full
               border
               bg-white
@@ -147,26 +165,32 @@ export default function PixModal({
               focus:ring-0
               focus:border-neutral-400
             "
-            placeholder="Seu nome"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+              placeholder="Seu nome"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
 
-          {error && <p className="text-red-600 text-xs mt-2">{error}</p>}
+            {error && <p className="text-red-600 text-xs mt-2">{error}</p>}
+          </div>
+          {!isPixLivre ? (
+            <p className="text-neutral-600 text-sm md:text-base mt-6">
+              Escolha como deseja presentear os noivos
+            </p>
+          ) : null}
         </div>
 
-        {/* OPÇÕES */}
-        <div className="grid gap-3 text-sm">
-          {[
-            { key: "pix", label: "PIX" },
-            { key: "presencial", label: "Entregar pessoalmente" },
-            { key: "contato", label: "Conversar com os noivos" },
-          ].map((opt) => (
-            <label
-              key={opt.key}
-              className={`
+        {!isPixLivre && (
+          <div className="grid gap-3 text-sm">
+            {[
+              { key: "pix", label: "PIX" },
+              { key: "presencial", label: "Entregar pessoalmente" },
+              { key: "contato", label: "Conversar com os noivos" },
+            ].map((opt) => (
+              <label
+                key={opt.key}
+                className={`
                 flex items-center gap-3
-                p-3
+                p-2
                 border
                 rounded-lg
                 cursor-pointer
@@ -177,26 +201,27 @@ export default function PixModal({
                     : "border-neutral-300 hover:bg-white/60"
                 }
               `}
-            >
-              <input
-                type="radio"
-                checked={type === opt.key}
-                onChange={() => setType(opt.key as any)}
-                className="accent-black"
-              />
-              <span>{opt.label}</span>
-            </label>
-          ))}
-        </div>
+              >
+                <input
+                  type="radio"
+                  checked={type === opt.key}
+                  onChange={() => setType(opt.key as any)}
+                  className="accent-black"
+                />
+                <span>{opt.label}</span>
+              </label>
+            ))}
+          </div>
+        )}
 
         {/* PIX */}
-        {type === "pix" && (
-          <div className="flex flex-col items-center gap-4">
-            <p className="text-xs text-neutral-500">
-              PIX disponível para qualquer valor
+        {(type === "pix" || isPixLivre) && (
+          <div className="flex flex-col items-center gap-2">
+            <p className="text-xs text-neutral-500 mt-1">
+              Escaneie ou copie a chave PIX
             </p>
 
-            <div className="bg-white p-4 rounded-xl">
+            <div className="bg-white p-2 rounded-xl">
               <img
                 src={pixImg.src}
                 className="w-[120px] md:w-[150px]"
@@ -204,16 +229,12 @@ export default function PixModal({
               />
             </div>
 
-            <p className="text-sm text-center text-neutral-600">
-              Escaneie ou copie a chave PIX
-            </p>
-
             {/* CHAVE PIX */}
             <div className="w-full space-y-2">
               <p className="text-xs text-neutral-500">Chave PIX</p>
 
               <div className="flex gap-2">
-                <div className="flex-1 bg-white p-3 text-xs rounded-lg">
+                <div className="flex-1 bg-white p-2 text-xs rounded-lg">
                   {pixKey}
                 </div>
 
@@ -226,9 +247,7 @@ export default function PixModal({
               </div>
             </div>
 
-            {copied && (
-              <p className="text-green-600 text-sm">PIX copiado!</p>
-            )}
+            {copied && <p className="text-green-600 text-sm">PIX copiado!</p>}
           </div>
         )}
 
@@ -248,7 +267,7 @@ export default function PixModal({
         >
           {loading
             ? "Salvando..."
-            : type === "pix"
+            : isPixLivre || type === "pix"
               ? "Já realizei o PIX"
               : "Confirmar presente"}
         </button>

@@ -1,17 +1,26 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata = {
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "http://localhost:3000");
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Rodrigo & Nathália",
   description: "Casamento • 06 de Agosto de 2026",
   openGraph: {
     title: "Rodrigo & Nathália",
     description: "Casamento • 06 de Agosto de 2026",
+    type: "website",
     images: [
       {
-        url: "/og-image.png", 
+        url: "/og-image.png",
         width: 1284,
         height: 836,
+        alt: "Rodrigo & Nathália",
       },
     ],
   },

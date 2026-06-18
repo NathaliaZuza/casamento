@@ -79,7 +79,7 @@ export default function CerimonySection() {
         <div ref={imageRef}>
           <div className="w-[220px] h-[220px] md:w-[220px] md:h-[220px] rounded-full overflow-hidden mt-[0px]">
             <img
-              src="/images/cerimonia1.jpg"
+              src="/images/cerimonia.jpg"
               alt="Cerimônia"
               className="w-full h-full object-cover"
             />

@@ -4,16 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 const photos = [
-  "/images/gallery/11.jpg",
-  "/images/gallery/21.jpg",
-  "/images/gallery/31.jpg",
-  "/images/gallery/41.jpg",
-  "/images/gallery/51.jpg",
-  "/images/gallery/61.jpg",
-  "/images/gallery/71.jpg",
-  "/images/gallery/81.jpg",
+  "/images/gallery/1.jpg",
+  "/images/gallery/2.jpg",
+  "/images/gallery/3.jpg",
+  "/images/gallery/4.jpg",
+  "/images/gallery/5.jpg",
+  "/images/gallery/6.jpg",
+  "/images/gallery/7.jpg",
+  "/images/gallery/8.jpg",
   "/images/gallery/91.jpg",
-  "/images/gallery/101.jpg",
+  "/images/gallery/10.jpg",
 ];
 
 export default function PhotosSection() {

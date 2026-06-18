@@ -21,7 +21,6 @@ export default function LocationMap() {
             src="https://www.google.com/maps?q=Sítio+Geranium+Taguatinga+DF&output=embed"
             width="100%"
             height="600"
-            loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
             className="border-0"

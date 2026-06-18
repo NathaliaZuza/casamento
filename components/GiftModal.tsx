@@ -286,6 +286,7 @@ export default function GiftModal({ category, onClose }: Props) {
       </div>
       {selectedGift && (
         <PixModal
+          giftCategory={selectedGift.category}
           giftId={selectedGift.id}
           giftName={selectedGift.name}
           giftPrice={selectedGift.price}
