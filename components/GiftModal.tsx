@@ -161,6 +161,7 @@ export default function GiftModal({ category, onClose }: Props) {
           <div className="space-y-5">
             {gifts.map((gift) => (
               <div
+                key={gift.id}
                 className={`
                     flex
                     flex-col
@@ -279,8 +280,8 @@ export default function GiftModal({ category, onClose }: Props) {
             "
           >
             Caso prefira entregar o presente pessoalmente ou conversar
-            diretamente com os noivos, fique à vontade. Sua presença já será um
-            presente muito especial.
+            diretamente com a gente, fique à vontade. Cada gesto faz parte da
+            nossa história.
           </p>
         </div>
       </div>

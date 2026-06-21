@@ -54,15 +54,15 @@ export default function CerimonySection() {
     },
     {
       title: "Cerimônia e festa",
-      text: "Acontecerão no mesmo local, sem necessidade de deslocamento para outro espaço.s",
+      text: "Acontecerão no mesmo local, sem necessidade de deslocamento para outro espaço.",
     },
     {
-      title: "Início pontual às 16h",
-      text: "Nossa celebração terá apenas 3 horas. Não perca os primeiros momentos.",
+      title: "Horário",
+      text: "A programação começa às 16h com duração de 3 horas",
     },
     {
-      title: "Evento sem custos",
-      text: "Não haverá cobrança de entrada nem custos para participar do buffet.",
+      title: "Presentes",
+      text: "A lista está aberta para quem quiser deixar uma contribuição com carinho.",
     },
     {
       title: "Código de vestimenta",
@@ -105,7 +105,7 @@ export default function CerimonySection() {
           ref={descRef}
           className="text-center text-neutral-600 max-w-2xl leading-relaxed"
         >
-          Queremos proporcionar um momento leve, íntimo e significativo, pensado para que todos possam aproveitar cada instante com conforto. Veja como será o nosso dia:
+          Reunimos abaixo as informações principais da celebração e da lista de presentes em um só lugar.
         </p>
 
         {/* GRID CARDS */}

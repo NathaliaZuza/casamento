@@ -89,7 +89,7 @@ export default function EditorialSection() {
               md:mb-8
             "
           >
-            NOSSA HISTÓRIA
+            SOMOS UM SÓ
           </p>
 
           <h2

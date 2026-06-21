@@ -35,12 +35,24 @@ export default function Hero() {
   }, []);
 
   useEffect(() => {
-    gsap.from(contentRef.current?.children ?? [], {
+    if (!contentRef.current) return;
+
+    const elements = contentRef.current.children;
+
+    gsap.killTweensOf(elements);
+
+    gsap.set(elements, {
       opacity: 0,
       y: 80,
+    });
+
+    gsap.to(elements, {
+      opacity: 1,
+      y: 0,
       stagger: 0.15,
       duration: 1.4,
       ease: "power3.out",
+      clearProps: "transform,opacity",
     });
   }, []);
 
