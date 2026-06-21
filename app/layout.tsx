@@ -15,18 +15,9 @@ export const metadata: Metadata = {
     title: "Rodrigo & Nathália",
     description: "Casamento • 06 de Agosto de 2026",
     type: "website",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1284,
-        height: 836,
-        alt: "Rodrigo & Nathália",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    images: ["/og-image.png"],
   },
 };
 export default function RootLayout({
